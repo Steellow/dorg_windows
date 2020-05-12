@@ -10,4 +10,4 @@ Simple app to automatically organize your downloads folder. **dorg_windows** cre
 
 ## Stuff
 
-[Watch a Directory for Changes](http://timgolden.me.uk/python/win32_how_do_i/watch_directory_for_changes.html) script used by [Tim Golden](http://timgolden.me.uk/index.html)
+[Watch a Directory for Changes](http://timgolden.me.uk/python/win32_how_do_i/watch_directory_for_changes.html) script by [Tim Golden](http://timgolden.me.uk/index.html)
