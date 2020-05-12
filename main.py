@@ -5,7 +5,7 @@ import win32event
 import win32con
 import datetime
 
-path_to_watch = os.path.abspath(r'./playground')
+path_to_watch = os.path.abspath(r'C:\Users\[USERNAME]\Downloads')
 
 
 def move_files():
