@@ -5,12 +5,11 @@ import win32event
 import win32con
 import datetime
 
-# path_to_watch = os.path.abspath(r'C:/Users/auzer/Downloads')
 path_to_watch = os.path.abspath(r'./playground')
 
 
-def do_shit():
-    # Lists all files in the directory
+def move_files():
+    # Creates array of files (string) in Downloads folder
     files = (file for file in os.listdir(path_to_watch)
              if os.path.isfile(os.path.join(path_to_watch, file)))
 
@@ -18,16 +17,17 @@ def do_shit():
         filename_split = file.split(".")
         extension = filename_split[len(filename_split) - 1]
 
+        # Creates file extension folder if it doesn't exist already
         extension_folder_name = path_to_watch + "\\" + extension
         if not os.path.exists(extension_folder_name):
             os.makedirs(extension_folder_name)
 
-        # Moves the file to correct directory
+        # Moves the file to the correct directory
         try:
             os.rename(path_to_watch + "\\" + file,
                       extension_folder_name + "\\" + file)
         except:
-            # If file with same name already exists, add datetime to new files name
+            # If file with same name already exists, add datetime to new files' name
             now = datetime.datetime.now()
             formatted_datetime = now.strftime("_%Y-%m-%d--%H-%M-%S")
             filename_without_extension = os.path.splitext(file)[0]
@@ -46,23 +46,15 @@ change_handle = win32file.FindFirstChangeNotification(
     win32con.FILE_NOTIFY_CHANGE_FILE_NAME
 )
 
-#
-# Loop forever, listing any file changes. The WaitFor... will
+#  Loop forever, listing any file changes. The WaitFor... will
 #  time out every half a second allowing for keyboard interrupts
 #  to terminate the loop.
-#
 try:
     while 1:
         result = win32event.WaitForSingleObject(change_handle, 500)
 
-        #
-        # If the WaitFor... returned because of a notification (as
-        #  opposed to timing out or some error) then look for the
-        #  changes in the directory contents.
-        #
         if result == win32con.WAIT_OBJECT_0:
-            print("LMFAO")
-            do_shit()
+            move_files()
 
             win32file.FindNextChangeNotification(change_handle)
 
