@@ -5,7 +5,7 @@ Simple app to automatically organize your downloads folder. **dorg_windows** cre
 ## Good to know
 
 - If you try to manually create file inside Downloads folder, it might look like it disappears. dorg_windows acts instantly and the moment you create new file it moves it to its correct folder
-- If file with same name already exists, dorg_windows puts current date and time to the new files name.
+- If file with same name already exists, dorg_windows adds current date and time to the new files name.
 
 
 ## Stuff
